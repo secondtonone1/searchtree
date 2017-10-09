@@ -238,15 +238,29 @@ void TreeClass::preupdateNode(TreeNode * preNode, TreeNode * treeNode)
 	//判断前驱节点是否为该节点的左孩子
 	if(treeNode->m_pLeftChild != preNode)
 	{
+		TreeNode * prechild = NULL;
+		if(preNode->m_pLeftChild)
+		{
+			prechild = preNode->m_pLeftChild;
+		}
+
 		preNode->m_pLeftChild = treeNode->m_pLeftChild;
 		treeNode->m_pLeftChild->m_pParent = preNode;
 		if(preNode->m_pParent->m_pLeftChild == preNode)
 		{
-			preNode->m_pParent->m_pLeftChild =NULL;
+			preNode->m_pParent->m_pLeftChild =prechild;
+			if(prechild)
+			{
+				prechild->m_pParent = preNode->m_pParent;
+			}
 		}
 		else
 		{
-			preNode->m_pParent->m_pRightChild =NULL;
+			preNode->m_pParent->m_pRightChild =prechild;
+			if(prechild)
+			{
+				prechild->m_pParent = preNode->m_pParent;
+			}
 		}
 	}
 

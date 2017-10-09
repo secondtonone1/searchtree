@@ -36,6 +36,20 @@ int _tmain(int argc, _TCHAR* argv[])
 	treeClass2.visitTree();
 	cout << endl;
 
+	/////////////////////
+	int array3[6]={7,4,2,6,5,8};
+	list<int> mylist3;
+	mylist3.insert(mylist3.end() , array3 ,array3+6);
+	TreeClass treeClass3;
+	treeClass3.initial(mylist3);
+	treeClass3.visitTree();
+	cout << endl;
+	treeClass3.eraseNode(7);
+	treeClass3.visitTree();
+	cout << endl;
+
+	//////////////////////
+
 	getchar();
 	return 0;
 
